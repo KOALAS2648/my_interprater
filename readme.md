@@ -10,8 +10,10 @@ out x y
 x = register you want to display
 y = doesn't do anything just there so the code doesn't break
 
+use ";" as comments 
 WARNINGS:
 -THE PROGRAM IS CASE SENSITIVE.
 -EXTREMLEY INIFISHCANT.
 -ALOT OF FOR LOOPS.
 -TAKES QUITE A BIT OF TIME TO RUN TWO LINES; of the file not pytohn (1 SECOND)
+-NO INLINE COMMENTS

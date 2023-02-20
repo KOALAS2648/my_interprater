@@ -1,10 +1,9 @@
-import os
-# READ THE "readme" FILE FIRST
-command_words = ["register","add","out"]
+command_words = ["register","add","out","inc",";","rprint"]
+more_info_command_words = ["register"]
 # creates the memeroy lists
-memory = [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0]
+memory = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 # checks for any keywords
-def check_word(word, address, value):
+def check_word(word, address, value, addaddress):
     o = 0
     if address < 100:
         try:
@@ -12,6 +11,10 @@ def check_word(word, address, value):
                 memory[address] = int(value)
             elif word == "register" and memory[address] != 0:
                 return False
+            elif word == "inc":
+                memory[address]=memory[address]+1
+            elif word == "rprint":
+                return memory
             elif word == "out":
                 o = memory[address]
                 return o
@@ -27,12 +30,16 @@ def my_lang(code):
             line = line.split("\n")
             if len(line)>0:
                 code_lines.append(line)
+            if line[counter][0]==";":
+                code_lines.remove(line)
+                counter +=1
         # removes the "" from the list so I can now create the code to put it into the words
         for lines in code_lines:
             for letter in lines:
                 if letter == "":
                     lines.remove(letter)
         #get all the lines converted to words
+        counter = 0
         for lines in code_lines:
             for words in lines:
                 code_lines[counter]=words.split(" ")
@@ -52,6 +59,7 @@ def my_lang(code):
     do_words = []
     address = []
     values = []
+    start_word = ""
     counter_outer = 0
     counter = 0
     for coword in code_lines:
@@ -59,17 +67,19 @@ def my_lang(code):
         counter_outer+=1
     counter_outer = 0
     # get the adresses of where to register
-    for reg in code_lines:
-        address.append(code_lines[counter_outer][1])
+    if code_lines[counter_outer][0] in more_info_command_words:
+        for reg in code_lines:
+            address.append(code_lines[counter_outer][1])
+            counter_outer+=1
+        counter_outer = 0
+        for val in code_lines:
+            values.append(code_lines[counter_outer][2])
+            counter_outer +=1
         counter_outer+=1
-    counter_outer = 0
-    for val in code_lines:
-        values.append(code_lines[counter_outer][2])
-        counter_outer +=1
     #RUNNING THE FINAL PRODUCT
     counter=0
     for command_word in do_words:
-        output =check_word(command_word, address[counter],values[counter])
+        output =check_word(command_word, address[counter],values[counter],0)
         counter+=1
     if __name__=="__main__":
         return output

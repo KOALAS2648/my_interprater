@@ -1,5 +1,5 @@
 import os
-import cowords
+
 command_words = ["register","add","out"]
 # creates the memeroy lists
 memory = [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0]

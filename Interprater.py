@@ -1,4 +1,4 @@
-command_words = ["register","add","out","inc",";","rprint"]
+command_words = ["register","add","out","inc",";","rprint","add","mul"]
 more_info_command_words = ["register"]
 # creates the memeroy lists
 memory = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -15,9 +15,13 @@ def check_word(word, address, value, addaddress):
                 memory[address]=memory[address]+1
             elif word == "rprint":
                 return memory
+            elif word == "add":
+                memory[address] = memory[adress]+value
+            elif word == "mul":
+                memory[address] = memory[adress]*value
             elif word == "out":
                 o = memory[address]
-                return o
+                print(o)
         except:
             return "why"
 def my_lang(code):

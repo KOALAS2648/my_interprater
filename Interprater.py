@@ -116,4 +116,3 @@ while not has_exited:
     
     elif action[0] == "exit":
         has_exited = True
-#Desktop/python/my_interprater

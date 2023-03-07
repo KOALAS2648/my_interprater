@@ -10,10 +10,15 @@ out x y
 x = register you want to display
 y = doesn't do anything just there so the code doesn't break
 
+To "add" a register and a value together you need to have:
+add x y
+
+x = register you want to add and store the final reasult 
+y = the amount you want to add
 use ";" as comments 
 WARNINGS:
 -THE PROGRAM IS CASE SENSITIVE.
 -EXTREMLEY INIFISHCANT.
 -ALOT OF FOR LOOPS.
--TAKES QUITE A BIT OF TIME TO RUN TWO LINES; of the file not pytohn (1 SECOND)
+
 -NO INLINE COMMENTS

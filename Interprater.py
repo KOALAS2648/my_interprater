@@ -32,7 +32,7 @@ def check_word(word, address, value):
             elif word =="exit":
                 exit
         except:
-            return "why"
+            raise Exception("command: {} : not found".format(word)")
 def my_lang(code):
     # get the lines into words in sublists in one line
     code_lines =[]
@@ -41,7 +41,7 @@ def my_lang(code):
     with open(code, "r")as program:
         for line in program:
             line = line.split("\n")
-            if len(line)>0:
+            if len(line)>1:
                 code_lines.append(line)
             if line[counter][0]==";":
                 code_lines.remove(line)

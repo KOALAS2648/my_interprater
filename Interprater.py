@@ -32,7 +32,7 @@ def check_word(word, address, value):
             elif word =="exit":
                 exit
         except:
-            raise Exception("command: {} : not found".format(word)")
+            raise Exception("command: {} : not found".format(word))
 def my_lang(code):
     # get the lines into words in sublists in one line
     code_lines =[]
